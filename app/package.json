@@ -1,0 +1,51 @@
+{
+  "name": "apollo-upload-examples-app",
+  "private": true,
+  "license": "MIT",
+  "author": {
+    "name": "Jayden Seric",
+    "email": "me@jaydenseric.com",
+    "url": "https://jaydenseric.com"
+  },
+  "engines": {
+    "node": ">=10"
+  },
+  "browserslist": "Node >= 10, > 0.5%, not OperaMini all, not dead",
+  "dependencies": {
+    "@apollo/react-hooks": "^3.1.4",
+    "@apollo/react-ssr": "^3.1.4",
+    "apollo-cache-inmemory": "^1.6.5",
+    "apollo-client": "^2.6.8",
+    "apollo-upload-client": "^13.0.0",
+    "babel-plugin-graphql-tag": "^2.5.0",
+    "cross-fetch": "^3.0.4",
+    "device-agnostic-ui": "^5.1.1",
+    "dotenv-cli": "^3.1.0",
+    "graphql": "^14.6.0",
+    "graphql-tag": "^2.10.3",
+    "next": "^9.3.4",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-env": "^13.0.4",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jsdoc": "^22.1.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^3.0.0",
+    "prettier": "^2.0.4"
+  },
+  "scripts": {
+    "test": "npm run test:eslint && npm run test:prettier",
+    "test:eslint": "eslint .",
+    "test:prettier": "prettier -c .",
+    "dev": "dotenv next",
+    "build": "dotenv next build",
+    "start": "dotenv next start"
+  }
+}
