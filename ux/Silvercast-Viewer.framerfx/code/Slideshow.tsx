@@ -1,5 +1,6 @@
 import * as React from "react"
 import { Stack, Frame, addPropertyControls, ControlType } from "framer"
+import { url } from "framer/resource";
 
 import { ApolloClient } from "apollo-client"
 import { InMemoryCache, NormalizedCacheObject } from "apollo-cache-inmemory"
@@ -49,6 +50,8 @@ export function Slideshow(props) {
             })
     }, [props.graphQlUrl])
 
+    let imageUri = url('./code/images/TeamInGoto.png');
+
     if (state.error == null) {
         return (
             <Stack size="100%" direction={props.stackDirection}>
@@ -67,6 +70,7 @@ export function Slideshow(props) {
                             }}
                         >
                             {upload.path}
+                            <img src={imageUri} alt="myImage" />
                         </Frame>
                     ))}
             </Stack>

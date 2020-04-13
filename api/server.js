@@ -9,7 +9,7 @@ const mkdirp = require('mkdirp');
 const shortid = require('shortid');
 const { schema } = require('./schema');
 
-const UPLOAD_DIR = './uploads';
+const UPLOAD_DIR = '../viewer/Slideshow/code/images/uploads';
 const db = lowdb(new FileSync('db.json'));
 
 // Seed an empty DB.
