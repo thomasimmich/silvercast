@@ -175,7 +175,7 @@
         "clip" : true,
         "codeComponentIdentifier" : ".\/Slideshow.tsx_Slideshow",
         "codeComponentProps" : {
-          "graphQlUrl" : "http:\/\/localhost:3001"
+          "graphQlUrl" : "http:\/\/localhost:3001\/graphql"
         },
         "codeOverrideEnabled" : false,
         "constraintsLocked" : false,

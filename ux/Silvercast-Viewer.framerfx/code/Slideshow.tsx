@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Frame, addPropertyControls, ControlType } from "framer"
+import { Stack, Frame, addPropertyControls, ControlType } from "framer"
 
 import { ApolloClient } from "apollo-client"
 import { InMemoryCache, NormalizedCacheObject } from "apollo-cache-inmemory"
@@ -18,50 +18,58 @@ export function Slideshow(props) {
         showQuote: false,
     })
 
-    console.log("fetchDataFromGraphQlServer at " + graphQlUrl)
-    const cache = new InMemoryCache()
-    const link = createHttpLink({ uri: graphQlUrl })
-
-    const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
-        cache,
-        link,
-    })
-
-    client
-        .query({
-            query: gql`
-             query {
-                    uploads {
-                        filename, id, path
+    React.useEffect(() => {
+        console.log("fetchDataFromGraphQlServer at " + graphQlUrl)
+        const cache = new InMemoryCache()
+        const link = createHttpLink({ uri: graphQlUrl })
+    
+        const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
+            cache,
+            link,
+        })
+    
+        client
+            .query({
+                query: gql`
+                 query {
+                        uploads {
+                            filename, id, path
+                        }
                     }
-                }
-          `,
-        })
-        .then(result => {
-            console.log("GraphQL Query Result")
-            console.log(result.data.uploads)
-            setState({ uploads: result.data.uploads, ...props })
-        })
-        .catch(err => {
-            console.log("error: " + err)
-            setState({ error: err, ...props })
-        })
+              `,
+            })
+            .then(result => {
+                console.log("GraphQL Query Result")
+                console.log(result.data.uploads)
+                setState({ uploads: result.data.uploads, ...props })
+            })
+            .catch(err => {
+                console.log("error: " + err)
+                setState({ error: err, ...props })
+            })
+    }, [props.graphQlUrl])
 
     if (state.error == null) {
         return (
-            <Frame
-                {...rest}
-                whileHover={{
-                    scale: 1.1,
-                }}
-                style={{
-                    color: "#fff",
-                    fontSize: 16,
-                    fontWeight: 600,
-                }}
-            >
-                {state.uploads}
-            </Frame>
+            <Stack size="100%" direction={props.stackDirection}>
+                {// [4]
+                    state.uploads.map(upload => (
+                        <Frame
+                            {...rest}
+                            key={upload.id}
+                            whileHover={{
+                                scale: 1.1,
+                            }}
+                            style={{
+                                color: "#fff",
+                                fontSize: 16,
+                                fontWeight: 600,
+                            }}
+                        >
+                            {upload.path}
+                        </Frame>
+                    ))}
+            </Stack>
         )
     }
 
