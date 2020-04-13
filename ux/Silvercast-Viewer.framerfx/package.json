@@ -1,0 +1,15 @@
+{
+	"main": "dist/index.js",
+	"license": "MIT",
+	"devDependencies": {
+		"@types/react": "^16.8"
+	},
+	"peerDependencies": {
+		"framer": "^1.0",
+		"react": "^16.8"
+	},
+	"framer": {
+		"id": "f6c687a0-61d8-4b45-9c93-e932a646b275"
+	},
+	"author": "Thomas Immich"
+}
